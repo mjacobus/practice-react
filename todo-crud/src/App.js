@@ -1,23 +1,25 @@
-import logo from "./logo.svg";
 import "./App.css";
+import Tasks from "./Tasks/Tasks.js";
+
+const defaultTasks = [
+  {
+    id: 1,
+    name: "Do the dishes",
+  },
+  {
+    id: 2,
+    name: "Walk the dogs",
+  },
+  {
+    id: 3,
+    name: "Prepare lunch",
+  },
+];
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Tasks taskList={defaultTasks} />
     </div>
   );
 }
