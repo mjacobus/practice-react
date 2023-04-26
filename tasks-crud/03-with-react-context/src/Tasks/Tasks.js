@@ -1,20 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 
+import { Context } from "./context.js";
 import Task from "./Task.js";
 import Form from "./Form.js";
 
-export default function Tasks({ taskList }) {
-  const [tasks, setTasks] = useState(taskList);
-  const onSave = (task) => {
-    setTasks((prevState) => {
-      return [task, ...prevState];
-    });
-  };
+export default function Tasks() {
+  const ctx = useContext(Context);
 
   return (
     <React.Fragment>
-      <Form onSave={onSave} />
-      {tasks.map((task) => (
+      <Form onSave={ctx.onSave} />
+      {ctx.tasks.map((task) => (
         <Task task={task} key={task.id} />
       ))}
     </React.Fragment>

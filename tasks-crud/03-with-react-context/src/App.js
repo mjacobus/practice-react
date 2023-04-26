@@ -1,25 +1,13 @@
 import "./App.css";
 import Tasks from "./Tasks/Tasks.js";
-
-const defaultTasks = [
-  {
-    id: 1,
-    name: "Do the dishes",
-  },
-  {
-    id: 2,
-    name: "Walk the dogs",
-  },
-  {
-    id: 3,
-    name: "Prepare lunch",
-  },
-];
+import { Provider as TasksProvider } from "./Tasks/context";
 
 function App() {
   return (
     <div className="App">
-      <Tasks taskList={defaultTasks} />
+      <TasksProvider>
+        <Tasks />
+      </TasksProvider>
     </div>
   );
 }
