@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 
 import "./form.css";
 
@@ -7,22 +7,18 @@ function generateId() {
 }
 
 export default function Form({ onSave }) {
-  const [name, setName] = useState("");
+  const nameRef = useRef();
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    onSave({ name, id: generateId() });
-    setName("");
+    onSave({ name: nameRef.current.value, id: generateId() });
+    nameRef.current.value = "";
   };
   return (
     <fieldset>
       <form onSubmit={onSubmit}>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+        <input type="text" ref={nameRef} />
         <button>Add Task</button>
       </form>
     </fieldset>
